@@ -1,7 +1,7 @@
 /* rules.js — 캠핑장 정보 · 이용 규칙 */
 (function () {
   var S = window.TRIP.site, J = window.J, e = J.esc;
-  J.$('#s-name').textContent = S.name;
+  J.$('#s-name').textContent = S.name + ' · ' + S.spot;
   J.$('#s-addr').textContent = S.addr + ' · ' + S.tel;
   J.$('#s-tel').href = 'tel:' + S.tel.replace(/-/g, '');
   J.$('#s-map').href = 'https://map.kakao.com/link/search/' + encodeURIComponent(S.name);
