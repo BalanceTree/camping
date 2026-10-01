@@ -40,7 +40,7 @@
   /* ---------- 메뉴 ---------- */
   var PAGES = [
     ['index.html', '🏠', '홈'], ['move.html', '🚗', '이동'], ['food.html', '🍳', '식단'],
-    ['shop.html', '🛒', '장보기'], ['prep.html', '🎒', '준비'], ['weather.html', '☂', '날씨'], ['money.html', '💰', '정산'],
+    ['shop.html', '🛒', '장보기'], ['prep.html', '🎒', '준비'], ['rules.html', '📜', '규칙'], ['weather.html', '☂', '날씨'], ['money.html', '💰', '정산'],
   ];
   var here = location.pathname.split('/').pop() || 'index.html';
   var wrap = document.querySelector('.wrap');

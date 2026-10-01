@@ -1,8 +1,8 @@
 /* sw.js — 오프라인 캐시. 파일 바꾸면 VERSION 올리기 */
-const VERSION = 'jinan-v2';
-const FILES = ['./', 'index.html', 'move.html', 'food.html', 'shop.html', 'prep.html', 'weather.html', 'money.html',
+const VERSION = 'jinan-v3';
+const FILES = ['./', 'index.html', 'move.html', 'food.html', 'shop.html', 'prep.html', 'weather.html', 'money.html', 'rules.html',
   'style.css', 'config.js', 'data.js', 'common.js', 'weather-api.js', 'home.js', 'move.js', 'food.js', 'shop.js', 'prep.js',
-  'weather.js', 'money.js', 'favicon.svg', 'manifest.json', 'icon-180.png', 'icon-192.png', 'icon-512.png'];
+  'weather.js', 'money.js', 'rules.js', 'favicon.svg', 'manifest.json', 'icon-180.png', 'icon-192.png', 'icon-512.png'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(VERSION).then(c => c.addAll(FILES)).then(() => self.skipWaiting()));

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>준비 · 운일암반일암 원정</title>
+<title>규칙 · 운일암반일암 원정</title>
 <meta name="description" content="10.8 – 10.11 진안 운일암반일암 캠핑 · 볼더링 · 이동, 식단, 장보기, 날씨, 정산">
 <meta property="og:title" content="운일암반일암 원정 🏕️ 10.8–11">
 <meta property="og:description" content="4명 · 3박 4일 · 이동, 식단, 장보기, 날씨, 정산">
@@ -21,25 +21,25 @@
 <body>
 <div class="wrap">
 <header class="page-h">
-  <p class="eyebrow">PREP</p>
-  <h1>준비</h1>
-  <p>출발 전 확인할 것과 보관 계획</p>
+  <p class="eyebrow">SITE RULES</p>
+  <h1>캠핑장 규칙</h1>
+  <p>운일암반일암 국민여가캠핑장 기준</p>
 </header>
 
-<div class="card prog">
-  <div class="top"><b>출발 전 확인</b><span id="pcount">0 / 0</span></div>
-  <div class="mini-bar"><i id="pbar"></i></div>
-  <p class="sync" id="sync"><i></i><span>연결 중</span></p>
+<div class="card site">
+  <b id="s-name"></b><small id="s-addr"></small>
+  <div class="site-btns"><a class="btn primary" id="s-tel">📞 전화</a><a class="btn" id="s-map" target="_blank" rel="noopener">🗺️ 길찾기</a></div>
 </div>
-<div id="list"></div>
-<h2 class="sec">보관 계획</h2>
-<div class="card kv" id="storage"></div>
-<p class="foot">적재 높이 약 2.3m · 10.9 한글날이라 휴게소와 마트 붐빔</p>
+<h2 class="sec">확인된 정보</h2>
+<div class="card kv" id="s-facts"></div>
+<h2 class="sec">이용 규칙 <em class="note">공공 캠핑장 공통 기준 · 전화로 최종 확인</em></h2>
+<div class="card kv" id="s-rules"></div>
+<p class="foot" id="s-src"></p>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="config.js"></script>
 <script src="data.js"></script>
 <script src="common.js"></script>
-<script src="prep.js"></script>
+<script src="rules.js"></script>
 </body>
 </html>

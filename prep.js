@@ -17,5 +17,5 @@
       return '<div><span>' + e(r[0]) + '</span><b>' + e(r[1]) + (r[2] ? '<small>' + e(r[2]) + '</small>' : '') + '</b></div>';
     }).join('');
   }
-  kv('#rules', T.rules); kv('#storage', T.storage);
+  kv('#storage', T.storage);
 })();

@@ -10,6 +10,6 @@
         return '<li><span class="t">' + e(r[0]) + '</span><p>' + e(r[1]) + (r[2] ? '<small>' + e(r[2]) + '</small>' : '') + '</p></li>';
       }).join('') + '</ol>';
   }
-  tl('#moveA', 'ba', 'A', '투싼 · 윤여찬', '대전 출장 후 먼저 진입', T.moveA);
-  tl('#moveB', 'bb', 'B', '창섭 차 · 한창섭', '동탄에서 장 보고 출발', T.moveB);
+  tl('#moveA', 'ba', 'A', '투싼 · 여찬', '대전 출장 후 먼저 진입', T.moveA);
+  tl('#moveB', 'bb', 'B', '창섭 차 · 유은 · 양수빈', '동탄에서 장 보고 출발', T.moveB);
 })();
