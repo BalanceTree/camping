@@ -154,9 +154,9 @@ small { display: block; font-size: 12.5px; font-weight: 500; color: var(--muted)
 .members li { display: flex; gap: 10px; align-items: center; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 11px; }
 .members b { display: block; font-size: 15.5px; }
 .members span.r { display: block; font-size: 12px; color: var(--muted); line-height: 1.35; }
-.av { width: 36px; height: 36px; border-radius: 11px; display: grid; place-items: center; font-weight: 900; color: #07110d; flex: none; font-size: 15px; }
-.av.sm { width: 28px; height: 28px; border-radius: 9px; font-size: 13px; }
-.ba { background: var(--a); } .bb { background: var(--b); } .bc { background: var(--c); } .bd { background: var(--d); }
+.av { width: 36px; height: 36px; border-radius: 11px; display: grid; place-items: center; font-weight: 900; color: #07110d; flex: none; font-size: 20px; line-height: 1; }
+.av.sm { width: 28px; height: 28px; border-radius: 9px; font-size: 16px; }
+.ba { background: rgba(60,207,145,.22); } .bb { background: rgba(255,179,92,.24); } .bc { background: rgba(255,255,255,.16); } .bd { background: rgba(165,139,255,.24); }
 
 /* 타임라인 */
 .card-h { display: flex; gap: 10px; align-items: center; margin-bottom: 14px; }
@@ -270,7 +270,7 @@ details.models summary { font-size: 12.5px; color: var(--muted); font-weight: 70
   background: rgba(255,255,255,.05); border: 1px solid var(--line); border-radius: 30px; padding: 8px 12px; display: inline-flex; gap: 6px; align-items: center;
 }
 .pick button.on { background: var(--ink); color: #07110d; border-color: var(--ink); }
-.pick .av { width: 20px; height: 20px; font-size: 11px; border-radius: 6px; }
+.pick .av { width: 22px; height: 22px; font-size: 14px; border-radius: 6px; }
 .drop {
   display: flex; align-items: center; justify-content: center; gap: 8px; border: 1.5px dashed rgba(255,255,255,.25); border-radius: 14px;
   padding: 14px; font-size: 14px; font-weight: 700; color: var(--text); cursor: pointer; margin-bottom: 4px;
