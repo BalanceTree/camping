@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>정산 · 운일암반일암 원정</title>
+<meta name="description" content="10.8 – 10.11 진안 운일암반일암 캠핑 · 볼더링 · 이동, 식단, 장보기, 날씨, 정산">
+<meta property="og:title" content="운일암반일암 원정 🏕️ 10.8–11">
+<meta property="og:description" content="4명 · 3박 4일 · 이동, 식단, 장보기, 날씨, 정산">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#07110d">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="진안 캠핑">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="page-h">
+  <p class="eyebrow">MONEY · 4명 더치페이</p>
+  <h1>정산</h1>
+  <p>쓴 돈을 기록하면 누가 누구에게 얼마 보내면 되는지 최소 송금으로 계산해요</p>
+</header>
+
+<div class="msum">
+  <div class="card accent"><div class="lbl">총 지출</div><div class="big" id="m-total">0원</div><div class="sub" id="m-count">0건</div></div>
+  <div class="card"><div class="lbl">1인 평균</div><div class="big" id="m-avg">0원</div><div class="sub">4명 균등 기준</div></div>
+</div>
+<p class="sync" id="sync" style="margin:8px 4px 0"><i></i><span>연결 중</span></p>
+
+<h2 class="sec">지출 추가</h2>
+<div class="card form">
+  <label class="drop" id="m-drop"><input type="file" accept="image/*" id="m-file"><span id="m-droplabel">🧾 영수증 사진으로 자동 입력</span></label>
+  <div class="preview" id="m-preview"><img id="m-previmg" alt="영수증"><button type="button" id="m-prevx" aria-label="사진 빼기">✕</button></div>
+  <div class="ocr" id="m-ocr" hidden></div>
+  <label class="f" for="m-amount">금액</label>
+  <div class="amount-row"><input id="m-amount" type="number" inputmode="numeric" min="0" placeholder="0"><span>원</span></div>
+  <label class="f">항목</label><div class="pick" id="m-cat"></div>
+  <label class="f">낸 사람</label><div class="pick" id="m-payer"></div>
+  <label class="f">같이 쓴 사람</label><div class="pick" id="m-split"></div>
+  <label class="f" for="m-memo">메모</label><input id="m-memo" type="text" placeholder="예: 동탄 이마트 장보기" maxlength="40">
+  <label class="f" for="m-date">날짜</label><input id="m-date" type="date">
+  <div class="actions"><button class="btn" type="button" id="m-reset">지우기</button><button class="btn primary" type="button" id="m-save">추가</button></div>
+</div>
+
+<h2 class="sec">정산 결과</h2>
+<div class="card" id="m-balances"></div>
+<div id="m-transfers"></div>
+
+<h2 class="sec">지출 내역</h2>
+<div class="card" id="m-list"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="data.js"></script>
+<script src="common.js"></script>
+<script src="money.js"></script>
+</body>
+</html>
