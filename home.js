@@ -41,7 +41,7 @@
       J.$('#now-h').textContent = '🗓️ 다음 일정';
       J.$('#now-ic').textContent = '🛒';
       J.$('#now-lb').textContent = '10.8 목 17:30 · 동탄';
-      J.$('#now-tt').textContent = '창섭 + 유은 장보기 → 19:00 출발';
+      J.$('#now-tt').textContent = '창섭 + 유은 장보기 → 대전역 양수빈 픽업';
     } else {
       J.$('#now-h').textContent = '🏠 일정 끝';
       J.$('#now-ic').textContent = '💰';
