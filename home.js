@@ -75,7 +75,7 @@
     J.$('#' + prefix + '-sub').textContent = c.on + ' / ' + c.all + ' 완료';
     J.$('#' + prefix + '-bar').style.width = p + '%';
   }
-  J.checks.onChange(function () { pct('shop', T.shop); pct('prep', [T.prep]); });
+  J.checks.onChange(function () { pct('shop', T.shop); pct('prep', T.prepGroups()); });
   J.checks.start();
 
   /* 정산 합계 */
