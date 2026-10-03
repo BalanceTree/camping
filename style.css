@@ -245,6 +245,9 @@ li.on .box { background: var(--accent); border-color: var(--accent); }
 li.on .box::after { content: ''; width: 6px; height: 11px; border: solid var(--on-accent); border-width: 0 2.5px 2.5px 0; transform: rotate(45deg) translate(-1px,-1px); }
 li.on > span { color: var(--muted); text-decoration: line-through; }
 li.on > i { color: var(--muted); }
+.tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 5px; }
+.tags em { font-style: normal; font-size: 12px; font-weight: 700; color: var(--accent); background: var(--accent-soft); padding: 1px 8px; border-radius: 20px; }
+li.on .tags em { color: var(--muted); background: var(--surface-2); }
 
 /* 키-값 목록 */
 .kv { padding: 4px 16px; }

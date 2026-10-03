@@ -189,7 +189,7 @@
         '<ul class="buy">' + grp.items.map(function (it) {
           var id = J.checkId(grp.g, it[0]);
           return '<li tabindex="0" role="checkbox" data-id="' + J.esc(id) + '"><b class="box"></b><span>' + J.esc(it[0]) + '</span>' +
-            (it[1] ? '<i>' + J.esc(it[1]) + '</i>' : '') + (it[2] ? '<small>' + J.esc(it[2]) + '</small>' : '') + '</li>';
+            (it[1] ? '<i>' + J.esc(it[1]) + '</i>' : '') + ((it[2] || (it[3] && it[3].length)) ? '<small>' + J.esc(it[2] || '') + ((it[3] && it[3].length) ? '<span class="tags">' + it[3].map(function (t) { return '<em>' + J.esc(t) + '</em>'; }).join('') + '</span>' : '') + '</small>' : '') + '</li>';
         }).join('') + '</ul></details>';
     }).join('');
     box.querySelectorAll('details.fold').forEach(function (d) {
