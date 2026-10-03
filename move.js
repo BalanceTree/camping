@@ -1,15 +1,33 @@
-/* move.js — 멤버 · 목요일 동선 */
+/* move.js — 멤버 · 가는 날 · 오는 날 */
 (function () {
-  var T = window.TRIP, J = window.J, e = J.esc;
-  J.$('#members').innerHTML = T.members.map(function (m) {
-    return '<li><span class="av ' + m.cls + '">' + m.k + '</span><div><b>' + e(m.name) + '</b><span class="r">' + e(m.role) + '</span></div></li>';
-  }).join('');
-  function tl(box, cls, k, title, sub, rows) {
-    J.$(box).innerHTML = '<div class="card-h"><span class="av sm ' + cls + '">' + k + '</span><div><b>' + title + '</b><span class="r">' + sub + '</span></div></div>' +
-      '<ol class="tl">' + rows.map(function (r) {
-        return '<li><span class="t">' + e(r[0]) + '</span><p>' + e(r[1]) + (r[2] ? '<small>' + e(r[2]) + '</small>' : '') + '</p></li>';
-      }).join('') + '</ol>';
+  var T = window.TRIP, J = window.J, e = J.esc, M = T.members;
+  function av(i, size) { var m = M[i]; return '<span class="av ' + (size || '') + ' ' + m.cls + '" title="' + e(m.name) + '">' + m.k + '</span>'; }
+  function riders(list) {
+    if (!list.length) return '<span class="riders"><span class="solo">혼자</span></span>';
+    return '<span class="riders">' + list.map(function (i) { return av(i, 'sm'); }).join('') + '</span>';
   }
-  tl('#moveA', 'ba', '🕊️', '투싼 · 여찬', '대전 출장 끝나고 오후에 먼저 진입', T.moveA);
-  tl('#moveB', 'bb', '🍊', '창섭 차 · 창섭 + 유은 + 양수빈', '동탄에서 장 보고 양수빈 태워 출발', T.moveB);
+  function steps(rows) {
+    return '<ol class="tl">' + rows.map(function (r) {
+      return '<li><span class="t">' + e(r[0]) + '</span><p>' + e(r[1]) + (r[2] ? '<small>' + e(r[2]) + '</small>' : '') + '</p></li>';
+    }).join('') + '</ol>';
+  }
+  function carHead(c) {
+    var names = [M[c.who].name].concat(c.with.map(function (i) { return M[i].name; })).join(' · ');
+    return '<div class="car-h">' + av(c.who) + '<div class="who"><b>' + e(M[c.who].name) + '</b><span>' + e(c.note || names) + '</span></div>' + riders(c.with) + '</div>';
+  }
+
+  J.$('#members').innerHTML = M.map(function (m, i) {
+    return '<li>' + av(i) + '<div><b>' + e(m.name) + '</b><span class="r">' + e(m.role) + '</span></div></li>';
+  }).join('');
+
+  J.$('#go-h').innerHTML = e(T.go.title) + ' <em>' + e(T.go.sub) + '</em>';
+  J.$('#go').innerHTML = T.go.cars.map(function (c) {
+    return '<div class="card car">' + carHead(c) + steps(c.steps) + '</div>';
+  }).join('');
+
+  J.$('#back-h').innerHTML = e(T.back.title) + ' <em>' + e(T.back.sub) + '</em>';
+  J.$('#back').innerHTML = '<div class="pairs">' + T.back.cars.map(function (c) {
+    return '<div class="pair"><div class="lbl2">' + e(M[c.who].name) + ' 운전</div><div class="ppl">' +
+      [c.who].concat(c.with).map(function (i) { return av(i, 'xs') + e(M[i].name); }).join(' ') + '</div></div>';
+  }).join('') + '</div><div class="card">' + steps(T.back.steps) + '</div>';
 })();

@@ -40,7 +40,7 @@
   /* ---------- 메뉴 ---------- */
   var PAGES = [
     ['index.html', '🏠', '홈'], ['move.html', '🚗', '이동'], ['food.html', '🍳', '식단'],
-    ['shop.html', '🛒', '장보기'], ['prep.html', '🎒', '준비'], ['rules.html', '📜', '규칙'], ['weather.html', '☂', '날씨'], ['money.html', '💰', '정산'],
+    ['shop.html', '🛒', '장보기'], ['prep.html', '🎒', '준비'], ['rules.html', '📜', '안내'], ['weather.html', '☂', '날씨'], ['money.html', '💰', '정산'],
   ];
   var here = location.pathname.split('/').pop() || 'index.html';
   var wrap = document.querySelector('.wrap');
@@ -179,17 +179,22 @@
     }[status];
   };
 
-  /* 체크리스트 그리기: groups = [{g,t,s,items:[[이름,양,메모]]}] */
+  /* 체크리스트 그리기: groups = [{g,t,s,items:[[이름,양,메모]]}] · 그룹마다 접는 카드 */
   J.renderChecklist = function (box, groups, opts) {
     opts = opts || {};
-    box.innerHTML = groups.map(function (grp) {
-      return (grp.t ? '<h2 class="gh">' + J.esc(grp.t) + (grp.s ? ' <em>' + J.esc(grp.s) + '</em>' : '') + '</h2>' : '') +
+    var KEY = 'jinan-open-' + (opts.key || 'list'), openSet = J.ls.get(KEY, {});
+    box.innerHTML = groups.map(function (grp, gi) {
+      return '<details class="fold" data-gi="' + gi + '"' + (openSet[gi] ? ' open' : '') + '><summary><span class="tt"><b>' + J.esc(grp.t) + '</b>' +
+        (grp.s ? '<span>' + J.esc(grp.s) + '</span>' : '') + '</span><span class="cnt">0/' + grp.items.length + '</span></summary>' +
         '<ul class="buy">' + grp.items.map(function (it) {
           var id = J.checkId(grp.g, it[0]);
           return '<li tabindex="0" role="checkbox" data-id="' + J.esc(id) + '"><b class="box"></b><span>' + J.esc(it[0]) + '</span>' +
             (it[1] ? '<i>' + J.esc(it[1]) + '</i>' : '') + (it[2] ? '<small>' + J.esc(it[2]) + '</small>' : '') + '</li>';
-        }).join('') + '</ul>';
+        }).join('') + '</ul></details>';
     }).join('');
+    box.querySelectorAll('details.fold').forEach(function (d) {
+      d.addEventListener('toggle', function () { openSet[d.dataset.gi] = d.open; J.ls.set(KEY, openSet); });
+    });
     var lis = box.querySelectorAll('li[data-id]');
     lis.forEach(function (li) {
       function tog() { J.checks.toggle(li.dataset.id); }
@@ -198,9 +203,15 @@
     });
     J.checks.onChange(function () {
       var on = 0;
-      lis.forEach(function (li) {
-        var v = J.checks.get(li.dataset.id); if (v) on++;
-        li.classList.toggle('on', v); li.setAttribute('aria-checked', v);
+      box.querySelectorAll('details.fold').forEach(function (d) {
+        var items = d.querySelectorAll('li[data-id]'), n = 0;
+        items.forEach(function (li) {
+          var v = J.checks.get(li.dataset.id); if (v) n++;
+          li.classList.toggle('on', v); li.setAttribute('aria-checked', v);
+        });
+        on += n;
+        d.querySelector('.cnt').textContent = n + '/' + items.length;
+        d.classList.toggle('done', n === items.length);
       });
       if (opts.onCount) opts.onCount(on, lis.length);
     });

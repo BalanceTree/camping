@@ -9,7 +9,7 @@
     if (ph === 'before') {
       var d = J.dday();
       J.$('#dnum').textContent = d > 0 ? 'D-' + d : 'D-DAY';
-      J.$('#dlabel').textContent = '창섭 차 동탄 출발 10.8 목 17:30까지';
+      J.$('#dlabel').textContent = '10.8 목 17:30 동탄 출발까지';
       var ms = START - now, s = Math.floor(ms / 1000);
       var seg = [[Math.floor(s / 86400), '일'], [Math.floor(s % 86400 / 3600), '시간'], [Math.floor(s % 3600 / 60), '분'], [s % 60, '초']];
       J.$('#clock').innerHTML = seg.map(function (x) { return '<div class="seg"><b>' + String(x[0]).padStart(2, '0') + '</b><span>' + x[1] + '</span></div>'; }).join('');
